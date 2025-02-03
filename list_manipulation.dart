@@ -1,5 +1,3 @@
-import 'dart:io';
-
 /*
 
 Write a Dart function that takes a list of integers, squares all the even numbers, and sums all the odd numbers using the `map()` function.
@@ -19,8 +17,10 @@ Write a Dart function that takes a list of integers, squares all the even number
     - The sum of the odd numbers.
     - The list of squared even numbers.
 */
+import 'dart:io';
 
 void main() {
+  print('Enter a lsit of integers :');
   String? input = stdin.readLineSync();
 
   if (input != null) {
@@ -36,13 +36,13 @@ Map<String, dynamic> processList(List<int> numbers) {
   List<int> evenNums = [];
   int oddsum = 0;
 
-  for (int i = 0; i < numbers.length; i++) {
-    if (numbers[i] % 2 == 0) {
-      evenNums.add(numbers[i] * numbers[i]);
+  numbers.map((number) {
+    if (number % 2 == 0) {
+      evenNums.add(number * number);
     } else {
-      oddsum = oddsum + numbers[i];
+      oddsum += number;
     }
-  }
+  }).toList();
 
   return {'sum': oddsum, 'evenNums': evenNums};
 }
